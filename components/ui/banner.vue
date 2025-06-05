@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import PillContainer from "../pill-container.vue";
 
-const props = defineProps({
+defineProps({
   showBorder: {
     type: Boolean,
     default: true,

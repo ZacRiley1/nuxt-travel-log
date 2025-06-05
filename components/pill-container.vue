@@ -83,8 +83,8 @@ const computedStyle = computed(() => {
     ${colorVars};
     --surface: ${props.surface};
     --border-width: ${props.showBorder ? "1px" : "0"};
-    --glow-size: 1rem;
-    --glow-intensity: 0.25;
+    --glow-size: .5rem;
+    --glow-intensity: 0.15;
   `;
 });
 </script>
@@ -155,7 +155,7 @@ const computedStyle = computed(() => {
 }
 
 .animate-glow {
-  animation: glow 10s linear infinite;
+  animation: glow 6s linear infinite;
 }
 
 .glowing-border::before,
