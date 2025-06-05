@@ -32,6 +32,6 @@
     "lint-staged": "^16.1.0"
   },
   "lint-staged": {
-    "*": "pnpm lint"
+    "*": "pnpm lint:fix"
   }
 }
