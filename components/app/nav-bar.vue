@@ -51,6 +51,7 @@
 
     <!-- Right Side Login -->
     <div class="navbar-end">
+      <AppThemeToggle class="mr-2" />
       <NuxtLink to="/login" class="btn btn-ghost btn-sm text-white ">
         Login
       </NuxtLink>
