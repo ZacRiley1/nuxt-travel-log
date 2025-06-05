@@ -3,8 +3,15 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
+  components: true,
   css: ["~/assets/css/main.css"],
   vite: {
+    server: {
+      watch: {
+        usePolling: true,
+        interval: 100,
+      },
+    },
     plugins: [
       tailwindcss(),
     ],
