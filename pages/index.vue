@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col gap-5 min-h-screen bg-base-200 text-base-content">
     <div
-      class="hero w-full min-h-screen lg:min-h-0 lg:h-[700px] bg-cover bg-center"
+      class="hero w-full min-h-screen relative lg:min-h-0 lg:h-[700px] bg-cover bg-center"
       style="background-image: url('/img/forest.jpg');"
     >
       <div class="hero-overlay bg-black/60" />
@@ -23,13 +23,13 @@
           </div>
         </div>
       </div>
-      <div class="container mx-auto absolute top-20 left-0 right-0 p-4">
+      <div class="container mx-auto absolute bottom-20 left-0 right-0 p-4">
         <UiBanner
           :animated="true"
           :dismissable="true"
           :show-border="true"
         >
-          <div class="flex items-center gap-2 text-sm font-semibold text-primary">
+          <div class="flex items-center gap-2 text-sm font-semibold text-primary-content">
             <span>🚨</span>
             <span>Nomio is now live in 20+ countries! Start logging your trip.</span>
           </div>
