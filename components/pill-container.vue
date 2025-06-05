@@ -99,7 +99,7 @@ const computedStyle = computed(() => {
       positionClass,
       glowAnimated ? 'animate-glow' : '',
       full || position === 'center'
-        ? 'rounded-full'
+        ? 'rounded-md'
         : position === 'right'
           ? 'rounded-l-full'
           : 'rounded-r-full',
@@ -115,7 +115,7 @@ const computedStyle = computed(() => {
         class="text-xl -me-6 font-bold text-current flex items-center justify-end"
         @click="visible = false"
       >
-        <Icon name="tabler:x" class="text-primary" />
+        <Icon name="tabler:x" class="text-primary-content" />
       </button>
     </div>
   </div>

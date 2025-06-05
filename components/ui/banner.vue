@@ -42,7 +42,7 @@ defineProps({
       :duration="duration"
       :show-border="showBorder"
     >
-      <div class="flex items-center gap-2 text-sm font-medium text-base-content dark:text-base-content">
+      <div class="flex items-center gap-2 text-sm font-medium text-primary-content">
         <slot />
       </div>
     </PillContainer>
