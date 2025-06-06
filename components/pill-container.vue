@@ -37,7 +37,39 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  borderWidth: {
+    type: String,
+    default: "2px",
+  },
+  glowSize: {
+    type: String,
+    default: "1rem",
+  },
+  glowIntensity: {
+    type: String,
+    default: "0.625",
+  },
 });
+
+const daisyTokenMap: Record<string, string> = {
+  primary: "var(--color-primary)",
+  secondary: "var(--color-secondary)",
+  accent: "var(--color-accent)",
+  neutral: "var(--color-neutral)",
+  base: "var( --color-base-100)",
+  error: "var(--color-error)",
+  success: "var(--color-success)",
+  warning: "var(--color-warning)",
+  info: "var(--color-info)",
+};
+
+function resolveSurface(input: string) {
+  return daisyTokenMap[input] || input;
+}
+
+function resolveColors(arr: string[]) {
+  return arr.map(c => daisyTokenMap[c] || c);
+}
 
 const visible = ref(true);
 
@@ -77,14 +109,16 @@ const positionClass = computed(() => {
 });
 
 const computedStyle = computed(() => {
-  const colors = props.animated ? rotateColors(props.colors) : props.colors;
-  const colorVars = colors.map((clr, i) => `--clr-${i + 1}: ${clr};`).join(" ");
+  const effectiveColors = props.animated ? rotateColors(props.colors) : props.colors;
+  const resolvedColors = resolveColors(effectiveColors);
+  const colorVars = resolvedColors.map((clr, i) => `--clr-${i + 1}: ${clr};`).join(" ");
+
   return `
-    ${colorVars};
-    --surface: ${props.surface};
-    --border-width: ${props.showBorder ? "1px" : "0"};
-    --glow-size: .5rem;
-    --glow-intensity: 0.15;
+    ${colorVars}
+    --surface: ${resolveSurface(props.surface)};
+    --border-width: ${props.showBorder ? props.borderWidth : "0"};
+    --glow-size: ${props.showBorder ? props.glowSize : "0"};
+    --glow-intensity: ${props.showBorder ? props.glowIntensity : "0"};
   `;
 });
 </script>
@@ -92,7 +126,7 @@ const computedStyle = computed(() => {
 <template>
   <div
     v-if="visible"
-    class="glowing-border relative overflow-hidden flex items-center justify-center whitespace-pre-wrap text-zinc-800 dark:text-zinc-100 bg-white/80 dark:bg-zinc-900/80"
+    class="glowing-border relative overflow-hidden flex items-center justify-center whitespace-pre-wrap text-zinc-800 dark:text-zinc-100"
     :class="[
       full ? 'w-full px-8' : widthClass,
       heightClass,
@@ -140,7 +174,7 @@ const computedStyle = computed(() => {
   --gradient-glow: var(--clr-1), var(--clr-2), var(--clr-3), var(--clr-4), var(--clr-5), var(--clr-1);
   border: var(--border-width, 1px) solid transparent;
   background:
-    linear-gradient(var(--surface, canvas) 0 0) padding-box,
+    linear-gradient(to right, var(--surface), var(--surface)) padding-box,
     conic-gradient(from var(--glow-deg), var(--gradient-glow)) border-box;
   position: relative;
   isolation: isolate;
