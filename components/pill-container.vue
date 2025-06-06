@@ -23,9 +23,9 @@ const props = defineProps({
     type: Array as () => string[],
     default: () => [
       "var(--color-secondary)",
-      "var(--color-accent)",
-      "var(--color-info-content)",
-      "var(--color-info)",
+      "var(--color-success)",
+      "var(--color-base-300)",
+      "var(--color-primary)",
       "var(--color-secondary)",
     ],
   },
@@ -47,7 +47,7 @@ const props = defineProps({
   },
   glowIntensity: {
     type: String,
-    default: "0.625",
+    default: "0.25",
   },
 });
 
@@ -189,7 +189,7 @@ const computedStyle = computed(() => {
 }
 
 .animate-glow {
-  animation: glow 6s linear infinite;
+  animation: glow 9s linear infinite;
 }
 
 .glowing-border::before,

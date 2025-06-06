@@ -9,7 +9,7 @@ const isDark = computed({
 </script>
 
 <template>
-  <label class="swap swap-rotate">
+  <label class="swap swap-rotate" :class="isDark ? 'text-base-content' : 'text-warning'">
     <!-- this hidden checkbox controls the state -->
     <input
       v-model="isDark"
@@ -19,7 +19,8 @@ const isDark = computed({
     >
 
     <!-- sun icon -->
-    <Icon name="tabler:bulb-filled" class="swap-off h-10 w-10 fill-current" />
+    <!-- <Icon name="tabler:bulb-filled" class="swap-off h-11 w-11 text-base-content" /> -->
+    <Icon name="tabler:bulb-filled" class="swap-off h-10 w-10 fill-current shadow-2xl" />
 
     <!-- moon icon -->
     <Icon name="tabler:bulb" class="swap-on h-10 w-10 fill-current" />

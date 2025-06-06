@@ -10,10 +10,10 @@ defineProps({
     type: Array as () => string[],
     default: () => [
       "var(--color-secondary)",
+      "oklch(0 0 0 / 0);",
+      "var(--color-success)",
+      "oklch(0 0 0 / 0);",
       "var(--color-accent)",
-      "var(--color-info-content)",
-      "var(--color-info)",
-      "var(--color-secondary)",
     ],
   },
   surface: {
