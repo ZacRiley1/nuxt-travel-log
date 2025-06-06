@@ -34,7 +34,7 @@
   --size-field: 0.21875rem;
   --border: 1px;
   --depth: 1;
-  --noise: 1;
+  --noise: 0;
 }
 @plugin "daisyui/theme" {
   name: "light";
@@ -49,8 +49,8 @@
   --color-primary-content: oklch(12% 0.042 264.695);
   --color-secondary: oklch(84% 0.143 164.978);
   --color-secondary-content: oklch(26% 0.051 172.552);
-  --color-accent: oklch(0% 0 0);
-  --color-accent-content: oklch(100% 0 0);
+  --color-accent: oklch(50% 0.118 165.612);
+  --color-accent-content: oklch(98% 0 0);
   --color-neutral: oklch(14% 0.005 285.823);
   --color-neutral-content: oklch(98% 0 0);
   --color-info: oklch(60% 0.126 221.723);
@@ -68,5 +68,5 @@
   --size-field: 0.21875rem;
   --border: 1px;
   --depth: 1;
-  --noise: 1;
+  --noise: 0;
 }

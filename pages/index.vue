@@ -4,7 +4,7 @@
       class="hero w-full min-h-screen relative lg:min-h-0 lg:h-[700px] bg-cover bg-center"
       style="background-image: url('/img/forest.jpg');"
     >
-      <div class="hero-overlay bg-black/60" />
+      <div class="hero-overlay bg-neutral-900/60" />
       <div class="hero-content text-neutral-content text-center">
         <div class="max-w-xl px-4">
           <h1 class="mb-6 text-5xl font-bold text-white">
@@ -14,9 +14,10 @@
             Nomio is your digital companion for logging trips, saving memories, and connecting with travelers across the world.
           </p>
           <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <button class="btn btn-primary">
+            <NuxtLink to="/dashboard" class="btn btn-base normal-case text-m text-base-content gap-2">
               Start Your Journey
-            </button>
+            </NuxtLink>
+
             <button class="btn btn-ghost border-white text-white hover:bg-white hover:text-black">
               Learn More
             </button>

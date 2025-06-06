@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar fixed top-0 left-0 z-50 bg-transparent text-base-content">
+  <nav class="navbar fixed top-0 left-0 z-50 bg-base-200 text-base-content min-h-10">
     <div class="navbar-start">
       <!-- Mobile Dropdown -->
       <div class="dropdown">
@@ -34,7 +34,7 @@
       </div>
 
       <!-- Logo -->
-      <NuxtLink to="/" class="btn btn-ghost normal-case text-xl text-base-content gap-2">
+      <NuxtLink to="/" class="btn btn-ghost normal-case text-lg text-base-content gap-2">
         <Icon name="tabler:world" class="w-5 h-5" />
         Nomio
       </NuxtLink>
@@ -51,10 +51,8 @@
 
     <!-- Right Side Login -->
     <div class="navbar-end">
-      <AppThemeToggle class="mr-2" />
-      <NuxtLink to="/login" class="btn btn-ghost btn-sm text-base-content ">
-        Login
-      </NuxtLink>
+      <AppThemeToggle class="mr-4" />
+      <AuthButton />
     </div>
   </nav>
 </template>
