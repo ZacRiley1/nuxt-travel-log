@@ -35,6 +35,7 @@ defineProps({
       width="s"
       height="s"
       position="center"
+      :surface="surface"
       full
       :colors="colors"
       :animated="animated"
