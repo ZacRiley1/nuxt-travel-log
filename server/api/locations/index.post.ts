@@ -33,7 +33,7 @@ export default defineEventHandler(async (event) => {
       slug: slugify(data.name),
       description: data.description,
       lat: data.lat,
-      lng: data.long,
+      long: data.long,
       userId: session.user.id,
     })
     .returning();
