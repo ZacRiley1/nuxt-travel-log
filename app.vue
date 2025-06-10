@@ -1,17 +1,20 @@
 <template>
   <NuxtLayout>
     <NuxtPage />
-  </Nuxtlayout>
+  </NuxtLayout>
 </template>
 
 <style>
 * {
-  transition: all 0.2s ease;
+  transition-property: color, background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
 }
 
 .page-enter-active,
 .page-leave-active {
-  transition: all 0.2s;
+  transition-property: opacity, filter;
+  transition-duration: 0.2s;
 }
 .page-enter-from,
 .page-leave-to {
@@ -21,7 +24,8 @@
 
 .layout-enter-active,
 .layout-leave-active {
-  transition: all 0.2s;
+  transition-property: filter;
+  transition-duration: 0.2s;
 }
 .layout-enter-from,
 .layout-leave-to {
