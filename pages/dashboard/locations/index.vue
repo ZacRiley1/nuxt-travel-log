@@ -37,8 +37,19 @@ const form = reactive<LocationForm>({
 
 const errors = reactive<Record<string, string>>({});
 
+function resetForm() {
+  form.name = "";
+  form.description = "";
+  form.lat = 0;
+  form.long = 0;
+  for (const key in errors) {
+    delete errors[key];
+  }
+}
+
 function closeModal() {
   router.replace("/dashboard/locations");
+  resetForm();
 }
 
 function submit() {
