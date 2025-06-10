@@ -5,7 +5,15 @@ const authClient = createAuthClient();
 export const useAuthStore = defineStore("useAuthStore", () => {
   const session = ref<Awaited<ReturnType<typeof authClient.useSession>> | null>(null);
 
-  async function init() {
+  function setSession(data: Awaited<ReturnType<typeof authClient.useSession>> | null) {
+    session.value = data;
+  }
+
+  async function init(initial?: any) {
+    if (initial) {
+      session.value = { data: initial, isPending: false } as any;
+      return;
+    }
     const data = await authClient.useSession(useFetch);
     session.value = data;
   }
@@ -22,11 +30,13 @@ export const useAuthStore = defineStore("useAuthStore", () => {
 
   async function signOut() {
     await authClient.signOut();
+    session.value = null;
     navigateTo("/");
   }
 
   return {
     init,
+    setSession,
     user,
     loading,
     signIn,
