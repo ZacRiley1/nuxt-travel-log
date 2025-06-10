@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { z } from "zod";
 
-const locations = [
-  { name: "Lisbon, Portugal", date: "2025-05-22", notes: "Nomad base for summer" },
-  { name: "Tokyo, Japan", date: "2025-04-12", notes: "Cherry blossom trip" },
-  { name: "Reykjavik, Iceland", date: "2025-01-03", notes: "Northern lights" },
-];
+type Location = {
+  id: number;
+  name: string;
+  description: string | null;
+  lat: number;
+  long: number;
+};
+
+const {
+  data: locations,
+  refresh: refreshLocations,
+} = await useFetch<Location[]>("/api/locations");
 
 definePageMeta({
   layout: "dashboard", // corresponds to layouts/dashboard.vue
@@ -41,7 +48,7 @@ function closeModal() {
   router.replace("/dashboard/locations");
 }
 
-function submit() {
+async function submit() {
   const result = LocationSchema.safeParse(form);
   if (!result.success) {
     const fieldErrors = result.error.flatten().fieldErrors as Record<string, string[]>;
@@ -50,7 +57,13 @@ function submit() {
     }
     return;
   }
-  // TODO: handle persistence
+
+  await $fetch("/api/locations", {
+    method: "POST",
+    body: result.data,
+  });
+
+  await refreshLocations();
   closeModal();
 }
 </script>
@@ -141,9 +154,11 @@ function submit() {
               {{ loc.name }}
             </h2>
             <p class="text-sm text-muted">
-              {{ loc.date }}
+              {{ loc.description }}
             </p>
-            <p>{{ loc.notes }}</p>
+            <p class="text-sm">
+              Lat: {{ loc.lat }}, Long: {{ loc.long }}
+            </p>
             <div class="card-actions justify-end">
               <button class="btn btn-outline btn-sm">
                 View
