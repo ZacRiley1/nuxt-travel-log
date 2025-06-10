@@ -229,7 +229,7 @@ async function submit() {
               <i class="bi bi-geo-alt-fill text-primary" />
               {{ loc.name }}
             </h2>
-            <p class="text-sm text-muted">
+            <p class="text-sm text-base-content/60">
               {{ loc.description }}
             </p>
             <p class="text-sm">
