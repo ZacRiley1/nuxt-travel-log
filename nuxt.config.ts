@@ -7,6 +7,10 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
   components: true,
+  app: {
+    pageTransition: { name: "page", mode: "out-in" },
+    layoutTransition: { name: "layout", mode: "out-in" },
+  },
   modules: [
     "@nuxt/eslint",
     "@nuxt/icon",

@@ -9,7 +9,7 @@ const isDark = computed({
 </script>
 
 <template>
-  <label class="swap swap-rotate" :class="isDark ? 'text-base-content' : 'text-warning'">
+  <label class="swap swap-rotate">
     <!-- this hidden checkbox controls the state -->
     <input
       v-model="isDark"
