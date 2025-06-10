@@ -1,7 +1,5 @@
 <script setup lang="ts">
 const sidebar = useControlBarStore();
-const authStore = useAuthStore();
-await authStore.init();
 </script>
 
 <template>
