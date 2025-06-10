@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { z } from "zod";
+
 import slugify from "~/lib/utils/slugify";
 
 type Location = {
@@ -25,7 +26,7 @@ definePageMeta({
 
 const router = useRouter();
 const route = useRoute();
-const previousRoute = useState<string | null>('previousRoute');
+const previousRoute = useState<string | null>("previousRoute");
 const showAddModal = ref(false);
 
 let delayTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -37,21 +38,23 @@ watch(
       clearTimeout(delayTimeout);
       delayTimeout = null;
     }
-    if (val === 'true') {
-      const cameFromAnotherRoute =
-        previousRoute.value && previousRoute.value.split('?')[0] !== route.path;
+    if (val === "true") {
+      const cameFromAnotherRoute
+        = previousRoute.value && previousRoute.value.split("?")[0] !== route.path;
       if (cameFromAnotherRoute) {
         delayTimeout = setTimeout(() => {
           showAddModal.value = true;
         }, 250);
-      } else {
+      }
+      else {
         showAddModal.value = true;
       }
-    } else {
+    }
+    else {
       showAddModal.value = false;
     }
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 const LocationSchema = z.object({
@@ -201,9 +204,9 @@ async function submit() {
             Save
           </button>
         </div>
-  </form>
+      </form>
     </UiSideModal>
-    <LocationDetailModal
+    <LocationsDetailModal
       :model-value="showViewModal"
       :location="selectedLocation"
       @update:model-value="(val: boolean) => { if (!val) closeViewModal() }"

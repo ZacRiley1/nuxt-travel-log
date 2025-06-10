@@ -9,7 +9,7 @@ const links = sidebarLinks;
 
 <template>
   <aside
-    class="fixed left-0 top-0 h-screen bg-base-200 border-r border-primary hidden md:flex flex-col justify-between z-50 sidebar-swap"
+    class="transition-all duration-200 fixed left-0 top-0 h-screen bg-base-200 border-r border-primary hidden md:flex flex-col justify-between z-50 sidebar-swap"
     :class="sidebar.isOpen ? 'w-52' : 'w-12'"
   >
     <div>

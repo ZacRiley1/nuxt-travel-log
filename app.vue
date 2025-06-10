@@ -6,9 +6,7 @@
 
 <style>
 * {
-  transition-property: color, background-color;
-  transition-duration: 0.2s;
-  transition-timing-function: ease;
+  transition: all 0.2s ease;
 }
 
 .page-enter-active,

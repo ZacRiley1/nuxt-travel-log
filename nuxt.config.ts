@@ -26,7 +26,7 @@ export default defineNuxtConfig({
       },
     },
     plugins: [
-      tailwindcss({ config: './tailwind.config.ts' }),
+      tailwindcss(),
     ],
   },
   colorMode: {
