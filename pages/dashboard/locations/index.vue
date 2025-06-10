@@ -26,7 +26,9 @@ definePageMeta({
 
 const router = useRouter();
 const route = useRoute();
+
 const previousRoute = useState<string | null>("previousRoute");
+
 const showAddModal = ref(false);
 
 let delayTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -38,9 +40,11 @@ watch(
       clearTimeout(delayTimeout);
       delayTimeout = null;
     }
+
     if (val === "true") {
       const cameFromAnotherRoute
         = previousRoute.value && previousRoute.value.split("?")[0] !== route.path;
+
       if (cameFromAnotherRoute) {
         delayTimeout = setTimeout(() => {
           showAddModal.value = true;
@@ -55,6 +59,7 @@ watch(
     }
   },
   { immediate: true },
+
 );
 
 const LocationSchema = z.object({
@@ -207,6 +212,7 @@ async function submit() {
       </form>
     </UiSideModal>
     <LocationsDetailModal
+
       :model-value="showViewModal"
       :location="selectedLocation"
       @update:model-value="(val: boolean) => { if (!val) closeViewModal() }"
