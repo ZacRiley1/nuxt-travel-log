@@ -5,7 +5,7 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="grid grid-cols-1 xl:grid-cols-4 gap-6 p-6">
+  <div class="grid grid-cols-1 xl:grid-cols-4 gap-6 p-6 text-primary-content">
     <!-- Left Column (Feed + Stats) -->
     <div class="xl:col-span-3 flex flex-col gap-6">
       <WidgetWeeklyCalendar />

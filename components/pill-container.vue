@@ -126,7 +126,7 @@ const computedStyle = computed(() => {
 <template>
   <div
     v-if="visible"
-    class="glowing-border relative overflow-hidden flex items-center justify-center whitespace-pre-wrap text-zinc-800 dark:text-zinc-100"
+    class="glowing-border relative overflow-hidden flex items-center justify-center whitespace-pre-wrap text-zinc-800 glass dark:text-zinc-100"
     :class="[
       full ? 'w-full px-8' : widthClass,
       heightClass,
