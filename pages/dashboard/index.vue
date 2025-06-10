@@ -8,7 +8,7 @@ definePageMeta({
   <div class="grid grid-cols-1 xl:grid-cols-4 gap-6 p-6 text-primary-content">
     <!-- Left Column (Feed + Stats) -->
     <div class="xl:col-span-3 flex flex-col gap-6">
-      <WidgetWeeklyCalendar />
+      <WidgetsWeeklyCalendar />
       <!-- Feed -->
       <section class="">
         <UiDashboardCard title="Travel Log Feed">
@@ -217,12 +217,12 @@ definePageMeta({
 
       <!-- Widgets -->
       <section class="bg-primary card shadow-md p-4 space-y-3">
-        <Widget title="Trips Logged" value="12" />
-        <Widget title="Connections" value="27" />
-        <Widget title="Photos Uploaded" value="98" />
+        <WidgetsStatWidget title="Trips Logged" value="12" />
+        <WidgetsStatWidget title="Connections" value="27" />
+        <WidgetsStatWidget title="Photos Uploaded" value="98" />
       </section>
 
-      <WidgetGallery />
+      <WidgetsGallery />
     </aside>
   </div>
 </template>
