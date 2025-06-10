@@ -1,7 +1,4 @@
-<script>
-export default {
-  name: "LoginPage",
-};
+<script setup lang="ts">
 </script>
 
 <template>
