@@ -10,6 +10,10 @@ type Location = {
   long: number;
 };
 
+type LocationWithImages = Location & {
+  images: { id: number; key: string }[];
+};
+
 const {
   data: locations,
   refresh: refreshLocations,
@@ -90,6 +94,19 @@ function resetForm() {
 function closeModal() {
   router.replace("/dashboard/locations");
   resetForm();
+}
+
+const showViewModal = ref(false);
+const selectedLocation = ref<LocationWithImages | null>(null);
+
+async function openViewModal(id: number) {
+  selectedLocation.value = await $fetch<LocationWithImages>(`/api/locations/${id}`);
+  showViewModal.value = true;
+}
+
+function closeViewModal() {
+  showViewModal.value = false;
+  selectedLocation.value = null;
 }
 
 async function submit() {
@@ -184,8 +201,13 @@ async function submit() {
             Save
           </button>
         </div>
-      </form>
+  </form>
     </UiSideModal>
+    <LocationDetailModal
+      :model-value="showViewModal"
+      :location="selectedLocation"
+      @update:model-value="(val: boolean) => { if (!val) closeViewModal() }"
+    />
     <section class="p-6 space-y-6">
       <div class="flex items-center justify-between">
         <h1 class="text-2xl font-bold">
@@ -214,7 +236,7 @@ async function submit() {
               Lat: {{ loc.lat }}, Long: {{ loc.long }}
             </p>
             <div class="card-actions justify-end">
-              <button class="btn btn-outline btn-sm">
+              <button class="btn btn-outline btn-sm" @click="openViewModal(loc.id)">
                 View
               </button>
             </div>
