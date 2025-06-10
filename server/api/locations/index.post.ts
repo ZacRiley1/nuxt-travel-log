@@ -1,7 +1,8 @@
+import { z } from "zod";
+
 import { auth } from "~/lib/auth";
 import db from "~/lib/db";
 import { location } from "~/lib/db/schema";
-import { z } from "zod";
 
 const LocationSchema = z.object({
   name: z.string().min(1),
@@ -39,7 +40,7 @@ export default defineEventHandler(async (event) => {
       slug: slugify(data.name),
       description: data.description,
       lat: data.lat,
-      long: data.long,
+      lng: data.long,
       userId: session.user.id,
     })
     .returning();
