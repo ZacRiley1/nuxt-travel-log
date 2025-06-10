@@ -57,6 +57,68 @@ function submit() {
 
 <template>
   <div>
+    <UiSideModal
+      :model-value="showAddModal"
+      @update:model-value="(val: boolean) => { if (!val) closeModal() }"
+    >
+      <h3 class="font-bold text-lg mb-4">
+        Add Location
+      </h3>
+      <form class="space-y-4" @submit.prevent="submit">
+        <div>
+          <input
+            v-model="form.name"
+            class="input input-bordered w-full"
+            placeholder="Name"
+          >
+          <p v-if="errors.name" class="text-error text-sm mt-1">
+            {{ errors.name }}
+          </p>
+        </div>
+        <div>
+          <textarea
+            v-model="form.description"
+            class="textarea textarea-bordered w-full"
+            placeholder="Description"
+          />
+          <p v-if="errors.description" class="text-error text-sm mt-1">
+            {{ errors.description }}
+          </p>
+        </div>
+        <div class="flex gap-2">
+          <input
+            v-model.number="form.lat"
+            type="number"
+            class="input input-bordered w-full"
+            placeholder="Latitude"
+          >
+          <input
+            v-model.number="form.long"
+            type="number"
+            class="input input-bordered w-full"
+            placeholder="Longitude"
+          >
+        </div>
+        <p v-if="errors.lat" class="text-error text-sm mt-1">
+          {{ errors.lat }}
+        </p>
+        <p v-if="errors.long" class="text-error text-sm mt-1">
+          {{ errors.long }}
+        </p>
+        <div class="mt-4 flex justify-end gap-2">
+          <button
+            type="button"
+            class="btn"
+            @click="closeModal"
+          >
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary">
+            Save
+          </button>
+        </div>
+      </form>
+    </UiSideModal>
     <section class="p-6 space-y-6">
       <div class="flex items-center justify-between">
         <h1 class="text-2xl font-bold">
@@ -91,32 +153,5 @@ function submit() {
         </div>
       </div>
     </section>
-
-    <UiSideModal
-      :model-value="showAddModal"
-      @update:modelValue="val => { if (!val) closeModal() }"
-    >
-      <h3 class="font-bold text-lg mb-4">Add Location</h3>
-      <form @submit.prevent="submit" class="space-y-4">
-        <div>
-          <input v-model="form.name" class="input input-bordered w-full" placeholder="Name">
-          <p v-if="errors.name" class="text-error text-sm mt-1">{{ errors.name }}</p>
-        </div>
-        <div>
-          <textarea v-model="form.description" class="textarea textarea-bordered w-full" placeholder="Description" />
-          <p v-if="errors.description" class="text-error text-sm mt-1">{{ errors.description }}</p>
-        </div>
-        <div class="flex gap-2">
-          <input type="number" v-model.number="form.lat" class="input input-bordered w-full" placeholder="Latitude">
-          <input type="number" v-model.number="form.long" class="input input-bordered w-full" placeholder="Longitude">
-        </div>
-        <p v-if="errors.lat" class="text-error text-sm mt-1">{{ errors.lat }}</p>
-        <p v-if="errors.long" class="text-error text-sm mt-1">{{ errors.long }}</p>
-        <div class="mt-4 flex justify-end gap-2">
-          <button type="button" class="btn" @click="closeModal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save</button>
-        </div>
-      </form>
-    </UiSideModal>
   </div>
 </template>
