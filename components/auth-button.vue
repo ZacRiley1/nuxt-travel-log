@@ -31,9 +31,15 @@ const authStore = useAuthStore();
           <img :src="authStore.user?.image">
         </div>
       </div>
-      <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-        <NuxtLink to="/login/sign-out" class="btn btn-primary">
-          <Icon name="tabler:logout-2" /> Sign out
+
+      <ul tabindex="0" class="card dropdown-content border border-primary menu bg-base-200 z-1 p-2 shadow-sm">
+        <AppThemeToggle class="btn btn-ghost mb-2" />
+
+        <NuxtLink to="/dashboard" class="btn btn-ghost mb-2">
+          <Icon name="tabler:user-filled" /> Account
+        </NuxtLink>
+        <NuxtLink to="/login/sign-out" class="btn btn-ghost">
+          <Icon name="tabler:logout-2" /><span class="text-nowrap">Sign out</span>
         </NuxtLink>
       </ul>
     </div>

@@ -43,7 +43,7 @@ const props = defineProps({
   },
   glowSize: {
     type: String,
-    default: "1rem",
+    default: "1.5rem",
   },
   glowIntensity: {
     type: String,
