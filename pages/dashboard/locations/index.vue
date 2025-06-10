@@ -13,11 +13,34 @@ definePageMeta({
 
 const router = useRouter();
 const route = useRoute();
+const previousRoute = useState<string | null>('previousRoute');
 const showAddModal = ref(false);
 
-watchEffect(() => {
-  showAddModal.value = route.query.add === "true";
-});
+let delayTimeout: ReturnType<typeof setTimeout> | null = null;
+
+watch(
+  () => route.query.add,
+  (val) => {
+    if (delayTimeout) {
+      clearTimeout(delayTimeout);
+      delayTimeout = null;
+    }
+    if (val === 'true') {
+      const cameFromAnotherRoute =
+        previousRoute.value && previousRoute.value.split('?')[0] !== route.path;
+      if (cameFromAnotherRoute) {
+        delayTimeout = setTimeout(() => {
+          showAddModal.value = true;
+        }, 250);
+      } else {
+        showAddModal.value = true;
+      }
+    } else {
+      showAddModal.value = false;
+    }
+  },
+  { immediate: true }
+);
 
 const LocationSchema = z.object({
   name: z.string().min(1, "Name is required"),
