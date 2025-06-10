@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { z } from "zod";
+import slugify from "~/lib/utils/slugify";
 
 const locations = [
   { name: "Lisbon, Portugal", date: "2025-05-22", notes: "Nomad base for summer" },
@@ -44,6 +45,7 @@ watch(
 
 const LocationSchema = z.object({
   name: z.string().min(1, "Name is required"),
+  slug: z.string().min(1, "Slug is required"),
   description: z.string().optional(),
   lat: z.coerce.number().min(-90).max(90),
   long: z.coerce.number().min(-180).max(180),
@@ -53,10 +55,18 @@ type LocationForm = z.infer<typeof LocationSchema>;
 
 const form = reactive<LocationForm>({
   name: "",
+  slug: "",
   description: "",
   lat: 0,
   long: 0,
 });
+
+watch(
+  () => form.name,
+  (val) => {
+    form.slug = slugify(val);
+  },
+);
 
 const errors = reactive<Record<string, string>>({});
 
@@ -96,6 +106,16 @@ function submit() {
           >
           <p v-if="errors.name" class="text-error text-sm mt-1">
             {{ errors.name }}
+          </p>
+        </div>
+        <div>
+          <input
+            v-model="form.slug"
+            class="input input-bordered w-full"
+            placeholder="Slug"
+          >
+          <p v-if="errors.slug" class="text-error text-sm mt-1">
+            {{ errors.slug }}
           </p>
         </div>
         <div>
