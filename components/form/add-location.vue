@@ -13,7 +13,6 @@ const onSubmit = handleSubmit((values) => {
   closeModal();
 });
 
-
 function closeModal() {
   emit("close");
   resetForm();
@@ -21,7 +20,7 @@ function closeModal() {
 </script>
 
 <template>
-  <Form class="space-y-4" @submit.prevent="onSubmit">
+  <form class="space-y-4" @submit.prevent="onSubmit">
     <fieldset class="fieldset">
       <legend class="fieldset-legend">
         Name
@@ -33,7 +32,7 @@ function closeModal() {
         placeholder="Name"
         :class="errors.name ? 'input-error' : ''"
       />
-      <p v-if="errors.name" class="fieldset-label text-error text-sm mt-1">
+      <p v-if="errors.name" class="fieldset-label text-error text-xs mt-1">
         {{ errors.name }}
       </p>
     </fieldset>
@@ -49,7 +48,7 @@ function closeModal() {
         placeholder="Description"
         :class="errors.description ? 'input-error' : ''"
       />
-      <p v-if="errors.description" class="fieldset-label text-error text-sm mt-1">
+      <p v-if="errors.description" class="fieldset-label text-error text-xs mt-1">
         {{ errors.description }}
       </p>
     </fieldset>
@@ -65,7 +64,7 @@ function closeModal() {
           placeholder="Latitude"
           :class="errors.lat ? 'input-error' : ''"
         />
-        <p v-if="errors.lat" class="fieldset-label text-error text-sm flex-1 mt-1">
+        <p v-if="errors.lat" class="fieldset-label text-error text-xs flex-1 mt-1">
           {{ errors.lat }}
         </p>
       </div>
@@ -77,7 +76,7 @@ function closeModal() {
           placeholder="Longitude"
           :class="errors.long ? 'input-error' : ''"
         />
-        <p v-if="errors.long" class="fieldset-label text-error text-sm flex-1 mt-1">
+        <p v-if="errors.long" class="fieldset-label text-error text-xs flex-1 mt-1">
           {{ errors.long }}
         </p>
       </div>
