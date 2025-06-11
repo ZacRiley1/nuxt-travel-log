@@ -3,22 +3,20 @@ import { toTypedSchema } from "@vee-validate/zod";
 
 import { InsertLocation } from "~/lib/db/schema";
 
-const { handleSubmit, errors } = useForm({
+const emit = defineEmits<{ (e: "close"): void }>();
+
+const { handleSubmit, errors, resetForm } = useForm({
   validationSchema: toTypedSchema(InsertLocation),
 });
 const onSubmit = handleSubmit((values) => {
   console.log("Form submitted with values:", values);
+  closeModal();
 });
 
-effect(() => {
-  console.error(toRaw(errors.value));
-});
 
 function closeModal() {
-
-  // resetForm();
-  // router.replace("/dashboard/locations");
-  // resetForm();
+  emit("close");
+  resetForm();
 }
 </script>
 
