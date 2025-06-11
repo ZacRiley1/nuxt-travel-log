@@ -1,14 +1,28 @@
+<script setup lang="ts">
+const route = useRoute();
+const layout = computed(() => {
+  if (route.path.startsWith("/dashboard"))
+    return "dashboard";
+  if (
+    route.path.startsWith("/articles")
+    || route.path.startsWith("/guides")
+    // add more as needed
+  ) {
+    return "content";
+  }
+  return "default";
+});
+</script>
+
 <template>
-  <NuxtLayout>
+  <NuxtLayout :name="layout">
     <NuxtPage />
   </NuxtLayout>
 </template>
 
 <style>
 * {
-  transition-property: color, background-color;
-  transition-duration: 0.2s;
-  transition-timing-function: ease;
+  transition: all 0.2s ease-in-out;
 }
 
 .page-enter-active,

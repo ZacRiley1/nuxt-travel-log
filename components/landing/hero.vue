@@ -1,18 +1,18 @@
 <script setup lang="ts">
 defineProps({
-  background: { type: String, default: '/img/forest.jpg' },
-  heading: { type: String, default: 'Explore More.' },
-  highlight: { type: String, default: 'Forget Less.' },
+  background: { type: String, default: "/img/forest.jpg" },
+  heading: { type: String, default: "Explore More." },
+  highlight: { type: String, default: "Forget Less." },
   tagline: {
     type: String,
     default:
-      'Nomio is your digital companion for logging trips, saving memories, and connecting with travelers across the world.',
+      "Nomio is your digital companion for logging trips, saving memories, and connecting with travelers across the world.",
   },
   bannerText: {
     type: String,
-    default: 'Nomio is now live in 20+ countries! Start logging your trip.',
+    default: "Nomio is now live in 20+ countries! Start logging your trip.",
   },
-})
+});
 </script>
 
 <template>
@@ -40,7 +40,11 @@ defineProps({
       </div>
     </div>
     <div class="container mx-auto absolute bottom-20 left-0 right-0 p-4">
-      <UiBanner :animated="true" :dismissable="true" :show-border="true">
+      <UiBanner
+        :animated="true"
+        :dismissable="true"
+        :show-border="true"
+      >
         <div class="flex items-center gap-2 text-sm font-semibold text-primary-content">
           <span>🚨</span>
           <span>{{ bannerText }}</span>

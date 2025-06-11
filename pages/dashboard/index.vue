@@ -1,14 +1,12 @@
 <script setup>
-definePageMeta({
-  layout: "dashboard", // corresponds to layouts/dashboard.vue
-});
+
 </script>
 
 <template>
   <div class="grid grid-cols-1 xl:grid-cols-4 gap-6 p-6 text-primary-content">
     <!-- Left Column (Feed + Stats) -->
     <div class="xl:col-span-3 flex flex-col gap-6">
-      <WidgetsWeeklyCalendar />
+      <WidgetWeeklyCalendar />
       <!-- Feed -->
       <section class="">
         <UiDashboardCard title="Travel Log Feed">
@@ -215,14 +213,14 @@ definePageMeta({
         </div>
       </section>
 
-      <!-- Widgets -->
+      <!-- Widget -->
       <section class="bg-primary card shadow-md p-4 space-y-3">
-        <WidgetsStatWidget title="Trips Logged" value="12" />
-        <WidgetsStatWidget title="Connections" value="27" />
-        <WidgetsStatWidget title="Photos Uploaded" value="98" />
+        <WidgetStatWidget title="Trips Logged" value="12" />
+        <WidgetStatWidget title="Connections" value="27" />
+        <WidgetStatWidget title="Photos Uploaded" value="98" />
       </section>
 
-      <WidgetsGallery />
+      <WidgetGallery />
     </aside>
   </div>
 </template>

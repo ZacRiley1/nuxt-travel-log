@@ -120,6 +120,7 @@ const links = sidebarLinks;
   animation: card-fade-slide 0.3s;
   transition:
     height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.2s cubic-bezier(0.4, 0, 0.2, 1),
     opacity 0.3s;
   overflow: hidden;
 }
@@ -144,7 +145,7 @@ const links = sidebarLinks;
   }
   100% {
     opacity: 0.5;
-    height: 42px;
+    height: 62px;
   }
 }
 </style>

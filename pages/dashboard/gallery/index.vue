@@ -4,10 +4,6 @@ const photos = [
   { url: "/img/tokyo.jpg", caption: "Shibuya Crossing at night" },
   { url: "/img/tokyo.jpg", caption: "Glacier hike in Iceland" },
 ];
-
-definePageMeta({
-  layout: "dashboard", // corresponds to layouts/dashboard.vue
-});
 </script>
 
 <template>

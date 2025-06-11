@@ -61,6 +61,7 @@ const daisyTokenMap: Record<string, string> = {
   success: "var(--color-success)",
   warning: "var(--color-warning)",
   info: "var(--color-info)",
+  glass: "oklch(0 0 0 / 0.1)",
 };
 
 function resolveSurface(input: string) {
@@ -126,7 +127,7 @@ const computedStyle = computed(() => {
 <template>
   <div
     v-if="visible"
-    class="glowing-border relative overflow-hidden flex items-center justify-center whitespace-pre-wrap text-zinc-800 glass dark:text-zinc-100"
+    class="relative glowing-border overflow-hidden flex items-center justify-center whitespace-pre-wrap text-zinc-800 glass dark:text-zinc-100"
     :class="[
       full ? 'w-full px-8' : widthClass,
       heightClass,
@@ -139,6 +140,7 @@ const computedStyle = computed(() => {
           : 'rounded-r-full',
       position === 'left' ? 'no-left-border' : '',
       position === 'right' ? 'no-right-border' : '',
+      showBorder ? 'show-border' : '',
     ]"
     :style="computedStyle"
   >
@@ -173,13 +175,16 @@ const computedStyle = computed(() => {
 .glowing-border {
   --gradient-glow: var(--clr-1), var(--clr-2), var(--clr-3), var(--clr-4), var(--clr-5), var(--clr-1);
   border: var(--border-width, 1px) solid transparent;
-  background:
-    linear-gradient(to right, var(--surface), var(--surface)) padding-box,
-    conic-gradient(from var(--glow-deg), var(--gradient-glow)) border-box;
   position: relative;
   isolation: isolate;
   overflow: visible;
   box-sizing: border-box;
+}
+
+.show-border {
+  background:
+    linear-gradient(to right, var(--surface), var(--surface)) padding-box,
+    conic-gradient(from var(--glow-deg), var(--gradient-glow)) border-box;
 }
 
 @keyframes glow {

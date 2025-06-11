@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@nuxtjs/color-mode",
     "@pinia/nuxt",
+    "@vee-validate/nuxt",
   ],
   css: ["~/assets/css/main.css"],
   vite: {
@@ -26,7 +27,7 @@ export default defineNuxtConfig({
       },
     },
     plugins: [
-      tailwindcss({ config: './tailwind.config.ts' }),
+      tailwindcss(),
     ],
   },
   colorMode: {
